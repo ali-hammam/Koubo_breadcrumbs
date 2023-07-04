@@ -1,0 +1,15 @@
+{% comment %}
+  The contents of the article.liquid template can be found in /sections/article-template.liquid
+{% endcomment %}
+
+{% section 'article-template' %}
+<script>
+$('.post_text p').each(function(i){          // For each paragraph
+    if ( ($(this).find('img').length) &&     // If there's an image
+         (!$.trim($(this).text()).length))   // and there's no text
+    {
+        $(this).addClass('imgOnly');         // Add a special CSS class
+        //$(this).next('p').addClass('imgOnly'); //
+    }
+});
+</script>

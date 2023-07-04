@@ -1,0 +1,380 @@
+<style>
+    @media only screen and (max-width: 798px) {
+        .container {
+            width: calc(100% - 20px);
+        }
+    }
+  
+  .homepage-slideshow .caption {
+    left: 20px;
+    top: 75%;
+  }
+  
+  .homepage-slideshow .caption h1 {
+    
+  }
+</style>
+
+<div class="introduction-section">
+    <img src="{{ 'wicker-furniture-landing-page.png' | asset_url }}">
+    <div class="slider-textarea">
+        <h1>{{ section.settings.title }}</h1>
+        <p class="description">{{ section.settings.slider1_description }}</p>
+        <a href="{{ section.settings.slider1_link }}" class="button-view action_button">{{
+            section.settings.slider1_view_button }}</a>
+    </div>
+</div>
+
+<div class="section-one">
+    <p>{{ section.settings.second_slider_description }}</p>
+</div>
+
+<div class="section-two">
+    <div class="collection-list">
+        {% for block in section.blocks %}
+        <div>
+            <div class="image-section">
+                <img src="{{ block.settings.image | img_url: '1000x' }}" class="wicker-furniture-background-image">
+                <span class="wicker-furniture-product-name">{{ block.settings.product_name }}</span>
+            </div>
+            <p class="wicker-furniture-product-description">
+                {{ block.settings.product_description }}
+            </p>
+            <div class="wicker-furniture-product-shop-now-section">
+                <a href="{{ block.settings.link }}" class="wicker-furniture-product-shop-now">{{
+                    section.settings.products_shop_now }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="section-three">
+    <section id="homepage_slider-{{section.id}}"
+             class="homepage-slideshow js-homepage-slideshow text-animation--false"
+             data-slider-id="homepage_slider-{{section.id}}"
+    >
+        {% if section.settings.slider_image %}
+        <div class="gallery-cell slide-{{ forloop.index }}" {{ block.shopify_attributes }} data-block-id="{{block.id}}">
+            <img src="{{ section.settings.slider_image | img_url: '1000x'}}"
+                 alt="{{ block.settings.image.alt | escape }}"
+                 class="lazyload {{ settings.image_loading_style }}"
+                 sizes="100vw"
+                 data-src="{{ section.settings.slider_image | img_url: '1000x'}}"
+                 srcset="{{ section.settings.slider_image | img_url: '1000x'}}"/>
+            <div class="caption position-{{block.settings.text_position}} js-caption">
+                <div class="caption-content
+                            caption-background-{{block.settings.caption_background}}
+                            caption-transparency-{{ block.settings.caption_background_transparency }}
+                            align-{{block.settings.text_align}}">
+                    <h1 class="headline">
+                        {{ section.settings.slider_image_text }}
+                    </h1>
+
+                </div>
+            </div>
+        </div>
+      {% endif %}
+      {% if section.settings.slider_image2 %}
+      <div class="gallery-cell slide-{{ forloop.index }}" {{ block.shopify_attributes }} data-block-id="{{block.id}}">
+            <img src="{{ section.settings.slider_image2 | img_url: '1000x'}}"
+                 alt="{{ block.settings.image.alt | escape }}"
+                 class="lazyload {{ settings.image_loading_style }}"
+                 sizes="100vw"
+                 data-src="{{ section.settings.slider_image2 | img_url: '1000x'}}"
+                 srcset="{{ section.settings.slider_image2 | img_url: '1000x'}}"/>
+            <div class="caption position-{{block.settings.text_position}} js-caption">
+                <div class="caption-content
+                            caption-background-{{block.settings.caption_background}}
+                            caption-transparency-{{ block.settings.caption_background_transparency }}
+                            align-{{block.settings.text_align}}">
+                    <h1 class="headline">
+                        {{ section.settings.slider_image2_text }}
+                    </h1>
+
+                </div>
+            </div>
+        </div>
+      {% endif %}
+            {% if section.settings.slider_image3 %}
+      <div class="gallery-cell slide-{{ forloop.index }}" {{ block.shopify_attributes }} data-block-id="{{block.id}}">
+            <img src="{{ section.settings.slider_image3 | img_url: '1000x'}}"
+                 alt="{{ block.settings.image.alt | escape }}"
+                 class="lazyload {{ settings.image_loading_style }}"
+                 sizes="100vw"
+                 data-src="{{ section.settings.slider_image3 | img_url: '1000x'}}"
+                 srcset="{{ section.settings.slider_image3 | img_url: '1000x'}}"/>
+            <div class="caption position-{{block.settings.text_position}} js-caption">
+                <div class="caption-content
+                            caption-background-{{block.settings.caption_background}}
+                            caption-transparency-{{ block.settings.caption_background_transparency }}
+                            align-{{block.settings.text_align}}">
+                    <h1 class="headline">
+                        {{ section.settings.slider_image2_text }}
+                    </h1>
+
+                </div>
+            </div>
+        </div>
+            {% endif %}
+
+            {% if section.settings.slider_image4 %}
+
+      <div class="gallery-cell slide-{{ forloop.index }}" {{ block.shopify_attributes }} data-block-id="{{block.id}}">
+            <img src="{{ section.settings.slider_image4 | img_url: '1000x'}}"
+                 alt="{{ block.settings.image.alt | escape }}"
+                 class="lazyload {{ settings.image_loading_style }}"
+                 sizes="100vw"
+                 data-src="{{ section.settings.slider_image4 | img_url: '1000x'}}"
+                 srcset="{{ section.settings.slider_image4 | img_url: '1000x'}}"/>
+            <div class="caption position-{{block.settings.text_position}} js-caption">
+                <div class="caption-content
+                            caption-background-{{block.settings.caption_background}}
+                            caption-transparency-{{ block.settings.caption_background_transparency }}
+                            align-{{block.settings.text_align}}">
+                    <h1 class="headline">
+                        {{ section.settings.slider_image4_text }}
+                    </h1>
+
+                </div>
+            </div>
+        </div      
+        {% endif %}
+    </section>
+</div>
+
+<div class="section-four">
+    <p>{{ section.settings.four_description }}</p>
+</div>
+
+<div class="section-five">
+    <div class="section-title">{{ section.settings.section_five_title }}</div>
+
+    <div class="wicker-list">
+        <div>
+            <img src="{{ section.settings.section_five_first_section_image | img_url:'1000x' }}"/>
+            <div class="description-section">
+                <div class="wicker-title">{{ section.settings.section_five_first_section_title }}</div>
+                <div class="description">
+                    {{ section.settings.section_five_first_section_content }}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <img src="{{ section.settings.section_five_second_section_image | img_url:'1000x' }}"/>
+            <div class="description-section">
+                <div class="wicker-title">{{ section.settings.section_five_second_section_title }}</div>
+                <div class="description">
+                    {{ section.settings.section_five_second_section_content }}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <img src="{{ section.settings.section_five_third_section_image | img_url:'1000x' }}"/>
+            <div class="description-section">
+                <div class="wicker-title">{{ section.settings.section_five_third_section_title }}</div>
+                <div class="description">
+                    {{ section.settings.section_five_third_section_content }}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <img src="{{ section.settings.section_five_forth_section_image | img_url:'1000x' }}"/>
+            <div class="description-section">
+                <div class="wicker-title">{{ section.settings.section_five_forth_section_title }}</div>
+                <div class="description">
+                    {{ section.settings.section_five_forth_section_content }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wicker Furniture",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title"
+    },
+    {
+      "type": "text",
+      "id": "slider1_description",
+      "label": "Main slider description"
+    },
+    {
+      "type": "text",
+      "id": "slider1_link",
+      "label": "Slider URL"
+    },
+    {
+      "type": "text",
+      "id": "slider1_view_button",
+      "label": "Slider View Button"
+    },
+    {
+      "type": "text",
+      "id": "products_shop_now",
+      "label": "Slider View Button"
+    },
+    {
+      "type": "text",
+      "id": "second_slider_description",
+      "label": "Text section under the first image block"
+    },
+    {
+      "type": "image_picker",
+      "id": "slider_image",
+      "label": "Slider image"
+    },
+	{
+		"type": "text",
+		"id": "slider_image_text",
+		"label": "Text for slide 1"
+	},
+    {
+      "type": "image_picker",
+      "id": "slider_image2",
+      "label": "Slider image"
+    },
+	{
+		"type": "text",
+		"id": "slider_image2_text",
+		"label": "Text for slide 2"
+	},
+    {
+      "type": "image_picker",
+      "id": "slider_image3",
+      "label": "Slider image"
+    },
+	{
+		"type": "text",
+		"id": "slider_image3_text",
+		"label": "Text for slide 3"
+	},
+    {
+      "type": "image_picker",
+      "id": "slider_image4",
+      "label": "Slider image"
+    },
+	{
+		"type": "text",
+		"id": "slider_image4_text",
+		"label": "Text for slide 4"
+	},
+	{
+	  "type": "text",
+	  "id": "four_description",
+	  "label": "Text under the second slider"
+	},
+	{
+	  "type": "text",
+	  "id": "section_five_title",
+	  "label": "5th section's title"
+	},
+	{
+	  "type": "text",
+	  "id": "section_five_first_section_title",
+	  "label": "First section title"
+	},
+	{
+	  "type": "richtext",
+	  "id": "section_five_first_section_content",
+	  "label": "First section content"
+	},
+	{
+	  "type": "image_picker",
+	  "id": "section_five_first_section_image",
+	  "label": "First section image"
+	},
+	{
+	  "type": "text",
+	  "id": "section_five_second_section_title",
+	  "label": "Second section title"
+	},
+	{
+	  "type": "richtext",
+	  "id": "section_five_second_section_content",
+	  "label": "Second section content"
+	},
+	{
+	  "type": "image_picker",
+	  "id": "section_five_second_section_image",
+	  "label": "Second section image"
+	},
+	{
+	  "type": "text",
+	  "id": "section_five_third_section_title",
+	  "label": "Third section title"
+	},
+	{
+	  "type": "richtext",
+	  "id": "section_five_third_section_content",
+	  "label": "Third section content"
+	},
+	{
+	  "type": "image_picker",
+	  "id": "section_five_third_section_image",
+	  "label": "Third section image"
+	},
+	{
+	  "type": "text",
+	  "id": "section_five_forth_section_title",
+	  "label": "Forth section title"
+	},
+	{
+	  "type": "richtext",
+	  "id": "section_five_forth_section_content",
+	  "label": "Forth section content"
+	},
+	{
+	  "type": "image_picker",
+	  "id": "section_five_forth_section_image",
+	  "label": "Forth section image"
+	}
+
+
+  ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Product list",
+      "settings": [
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "id": "product_name",
+          "type": "text",
+          "label": "Product name"
+        },
+        {
+          "id": "product_description",
+          "type": "text",
+          "label": "Product description"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Product Image"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

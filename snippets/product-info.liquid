@@ -1,0 +1,53 @@
+<div class="product-details">
+  {% if settings.enable_shopify_collection_badges and settings.enable_shopify_review_comments %}
+    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+  {% endif %}
+  {% if settings.display_vendor %}
+    <span itemprop="brand" class="brand">{{ product.vendor }}</span>
+  {% endif %}
+  
+  <span class="title" itemprop="name">{{ product.title }}</span>
+<!-- HERE? -->
+  {% if template.name == "collection" %}
+  	<div class="coll-card-review-stars">
+  		{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
+  	</div>
+  {% endif %}
+  {% if collection_handles contains 'coming-soon' %}
+    <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
+  {% else %}
+    <span class="price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+      {% if product.available %}
+        {% if product.price_varies and product.price_min > 0 %}
+          <small><em>{{ 'products.general.from' | t }}</em></small>
+        {% endif %}
+          {% if product.price_min > 0 %}
+            <span class="money">{{ product.price_min | money }} USD</span>
+          {% else %}
+            {{ settings.free_price_text }}
+          {% endif %}
+      {% else %}
+        <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
+      {% endif %}
+      {% if product.compare_at_price_max > product.price %}
+        <span class="was_price">
+          <span class="money">{{ product.compare_at_price_max | money }} USD</span>
+        </span>
+      {% endif %}
+      {% comment %}
+      <span class="on-price-shipping" style="padding-left:10px;">Free Shipping!</span>
+      {% endcomment %}
+    </span>
+  {% endif %}
+  
+  
+  {% comment %}
+  <form method="post" action="/cart/add">
+    <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+    <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+    <button type="submit" class="btn">
+      <span></span>
+    </button>
+  </form> 
+  {% endcomment %}
+</div>

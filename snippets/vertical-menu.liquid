@@ -1,0 +1,50 @@
+<ul class="vertical-menu">
+  {% for link in linklists[vertical-menu].links %}
+    {% if linklists[link.handle] == empty %}
+      <li>
+        <a href="{{ link.url }}" class="top_link {% if link.active %}active{% endif %}" data-dropdown-rel="{{ link.handle }}">
+          {{ link.title }} 
+        </a>
+      </li>
+    {% else %}
+      <li class="sublink"><a data-no-instant href="{{ link.url }}"  onfocus="focus2Function(this)" class="dropdown_link--vertical {% if link.active %}active{% endif %}" data-dropdown-rel="{{ link.handle }}" data-click-count="0">{{ link.title }} <span class="icon-down-arrow"></span></a>
+        <ul class="vertical-menu_submenu" {% if forloop.index == 6 %}onblur="blur2Function(this)"{% endif %}>
+          {% if forloop.index == 1 %}
+          	{% assign menuImg = section.settings.on_menu_img1 %}
+          {% elsif forloop.index == 2 %}
+          	{% assign menuImg = section.settings.on_menu_img2 %}
+          {% elsif forloop.index == 3 %}
+          	{% assign menuImg = section.settings.on_menu_img3 %}
+          {% elsif forloop.index == 4 %}
+          	{% assign menuImg = section.settings.on_menu_img4 %}
+          {% elsif forloop.index == 5 %}
+          	{% assign menuImg = section.settings.on_menu_img5 %}
+          {% elsif forloop.index == 6 %}
+          	{% assign menuImg = section.settings.on_menu_img6 %}
+            {% assign theLast = true %}
+          {% endif %}
+          {% for link in linklists[link.handle].links %}
+            {% if linklists[link.handle] == empty %}
+            <li>
+              <a href="{{ link.url }}" {% if forloop.last == true and theLast == true %}onblur="blur2Function(this)"{% endif %}>
+                {{ link.title }}
+              </a>
+            </li>
+            {% if menuImg != blank and forloop.first %}
+            <img src="{{ menuImg | img_url: '' }}">
+            {% endif %}
+            {% else %}
+            <li class="sublink"><a data-no-instant href="{{ link.url }}" data-click-count="0">{{ link.title }} <span class="right icon-down-arrow"></span></a>
+              <ul class="vertical-menu_sub-submenu">
+                {% for link in linklists[link.handle].links %}
+                  <li><a href="{{ link.url }}" >{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

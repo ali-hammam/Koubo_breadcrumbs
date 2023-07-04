@@ -1,0 +1,35 @@
+<div class="on-social-icons-section" {% if section.settings.on_social_bg_color != blank %}style="background-color:{{ section.settings.on_social_bg_color }}"{% endif %}>
+  <div class="on-social-icons-content">
+    {% include 'social-icons' %}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Settings"
+      },
+      {
+        "type": "color",
+        "id": "on_social_bg_color",
+        "label": "Background Color"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
